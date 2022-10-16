@@ -1,0 +1,44 @@
+{% extends 'halamanpegawai/layout.html' %}
+
+{% block title %}List Data{% endblock %}
+
+{% block content %}
+
+<h2>Daftar Permintaan Barang</h2>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<br/>
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">Jumlah Pesanan</th>
+            <th scope="col" class="py-3 px-6">Nama Pemesan</th>
+            <th scope="col" class="py-3 px-6">Tanggal Pesan</th>
+            <th scope="col" class="py-3 px-6">Status Pesanan</th>
+            <th scope="col" class="py-3 px-6">Alasan Penolakan</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in account %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.namabarang }}</td>
+            <td>{{ row.jumlahpesan }}</td>
+            <td>{{ row.nama }}</td>
+            <td>{{ row.tanggalpesan }}</td>
+            <td>{{ row.namastatuspesanan }}</td>
+            <td>{{ row.alasan }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+          $('#mytable').dataTable();
+      </script>
+      </table>
+    
+</div>
+{% endblock %}

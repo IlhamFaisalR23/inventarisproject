@@ -1,0 +1,48 @@
+{% extends 'halamankepalasekolah/layout.html' %}
+<img src="{{ url_for('serve_img', img_id=r.id)}}">
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<div class="flex justify-center mt-8">
+
+    <div class="lg:flex sm:w-96 rounded-lg lg:w-[950px] lg:h-[550px] bg-gray-500 sm:h-[900px]  ">
+        <div class="flex justify-between">
+            <div class="w-72 h-80 bg-black mt-10 ml-10">
+                
+            </div>
+            
+        </div>
+        
+        <div class="text-black mt-10 ml-10">
+            <h1 class="text-3xl">{{ account['nama_jabatan'] }}</h1>
+            <div class="mt-5 text-xl">
+                <span class="">Nama :</span><br>
+                <span>{{ account['nama'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Email :</span><br>
+                <span>{{ account['email'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">NIP :</span><br>
+                <span>{{ account['nip'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Jabatan :</span><br>
+                <span>{{ account['nama_jabatan'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Nomor Telepon :</span><br>
+                <span>{{ account['nomor_tlp'] }}</span>
+            </div>
+        </div>
+            <div class="lg:ml-72 lg:mt-[475px] sm:mt-[10px]">
+                <div class="flex justify-end">
+                    <img src="/static/img/logosekolah.png" alt="SMKN 11 BANDUNG" width="80" >
+                </div>
+            </div>
+    </div>
+    
+</div>
+<br/>
+{% endblock %}

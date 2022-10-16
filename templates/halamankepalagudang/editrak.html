@@ -1,0 +1,38 @@
+{% extends "halamankepalagudang/layout.html" %}
+
+{% block title %}Edit Satuan Barang{% endblock %}
+
+{% block content %}
+<a href="{{ url_for('rakbarang') }}" class="tombolback"><img src="{{ url_for('static', filename='img/icon/Back.png') }}" width="65" height="65"></a>
+<form action="/kepgud/rakbarang/editrak/{{ row.id_rak }}" method=post>
+        <br>
+            <div class="card-body">
+                    <div class="mb-3 row">
+                        <label for="id_rak" class="col-sm-2 col-form-label">ID Rak:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="id_rak" value="{{ row.id_rak }}" required autocomplete="off" disabled>
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="nama_rak" class="col-sm-2 col-form-label">Nama Rak:</label>
+                            <div class="col-sm-10">
+                                <input type="input" class="form-control" name="nama_rak" value="{{ row.nama_rak }}" required autocomplete="off">                             
+                                </div>
+                        </div>
+                    <div class="mb-3 row">
+                        <label for="kapasitas_rak class="col-sm-2 col-form-label">Kapasitas Rak:</label>
+                            <div class="col-sm-10">
+                                <input type="input" class="form-control" name="kapasitas_rak" value="{{ row.kapasitas_rak }}" required autocomplete="off">                             
+                                </div>
+                        </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </form>
+            </div>
+            </div>
+          
+    
+{% endblock %}

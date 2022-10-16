@@ -1,0 +1,57 @@
+{% extends 'halamankepalagudang/layout.html' %}
+
+{% block title %}Daftar Barang Keluar{% endblock %}
+
+{% block content %}
+<h2>Barang Keluar</h2>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">ID Barang Keluar</th>
+            <th scope="col" class="py-3 px-6">ID Kategori</th>
+            <th scope="col" class="py-3 px-6">ID Satuan</th>
+            <th scope="col" class="py-3 px-6">ID User</th>
+            <th scope="col" class="py-3 px-6">Kode Jabatan</th>
+            <th scope="col" class="py-3 px-6">Jumlah Keluar</th>
+            <th scope="col" class="py-3 px-6">Tanggal Keluar</th>
+            <th scope="col" class="py-3 px-6">ID Permintaan</th>
+            <th scope="col" class="py-3 px-6">ID Barang</th>
+            <th scope="col" class="py-3 px-6">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in databarangkeluar %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.0 }}</td>
+            <td class="py-4 px-6">{{ row.1 }}</td>
+            <td class="py-4 px-6">{{ row.2 }}</td>
+            <td class="py-4 px-6">{{ row.3 }}</td>
+            <td class="py-4 px-6">{{ row.4 }}</td>
+            <td class="py-4 px-6">{{ row.5 }}</td>
+            <td class="py-4 px-6">{{ row.6 }}</td>
+            <td class="py-4 px-6">{{ row.7 }}</td>
+            <td class="py-4 px-6">{{ row.8 }}</td>
+            <td class="py-4 px-6"><a href="#" role="button">Detail</a>
+            <a href="#" role="button">Hapus</a>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+          $('#mytable').dataTable();
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      </table>
+    
+</div>
+{% endblock %}

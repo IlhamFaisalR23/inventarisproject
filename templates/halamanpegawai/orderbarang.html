@@ -1,0 +1,66 @@
+{% extends "halamanpegawai/layout.html" %}
+
+{% block title %}Order Barang{% endblock %}
+
+{% block content %}
+<form action="/pegawai/homepegawai/buatpermintaan/orderbarang/{{ row.id_barang }}" method=post>
+    <center>
+        <h2>Order Barang {{ row.namabarang }}</h2>
+    </center>
+        <br>
+        <div>
+        <div class="card text-start">
+            <div class="card-body">
+                <div class="mb-3 row">
+                    <label for="id_permintaan" class="col-sm-2 col-form-label">ID Permintaan:</label>
+                        <div class="col-sm-10">
+                    <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Auto Generated" name="id_permintaan" autocomplete="off">
+                        </div>    
+                    </div>
+            
+                    <div class="mb-3 row">
+                    <label for="id_unitkerja" class="col-sm-2 col-form-label">ID Unit Kerja:</label>
+                        <div class="col-sm-10">
+                    <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ID Unit Kerja" value="{{ account['id_unitkerja'] }}" name="id_unitkerja" required autocomplete="off">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="id_user" class="col-sm-2 col-form-label">ID User:</label>
+                            <div class="col-sm-10">
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ID User" name="id_user" value="{{ session.id_user }}" required autocomplete="off">
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="kode_jabatan" class="col-sm-2 col-form-label">Kode Jabatan:</label>
+                            <div class="col-sm-10">
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Kode Jabatan" value="{{ account['kode_jabatan'] }}" name="kode_jabatan" required autocomplete="off">
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="id_barang" class="col-sm-2 col-form-label">ID Barang:</label>
+                            <div class="col-sm-10">
+                        <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="ID Barang" name="id_barang" value="{{ row.id_barang }}" required autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="jumlahpesan" class="col-sm-2 col-form-label">Jumlah Pesan:</label>
+                                <div class="col-sm-10">
+                            <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Jumlah Pesan" name="jumlahpesan" required autocomplete="off">
+                                </div>
+                            </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-footer text-muted">
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Pesan</button>
+                    <a href="{{ url_for('buatpermintaan') }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" role="button">Batal</a>
+            <br/>
+                </div>
+                <br/>
+            </div>
+        </div>
+    </form>
+{% endblock %}

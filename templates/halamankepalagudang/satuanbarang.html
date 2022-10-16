@@ -1,0 +1,115 @@
+{% extends 'halamankepalagudang/layout.html' %}
+
+{% block title %}Satuan Barang{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
+  <h1 class="text-2xl font-semibold"><a href="#"><i class="bi bi-arrow-left"></i> Info Satuan</a></h1>
+  <a
+  data-modal-toggle="authentication-modal"
+  class="px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+  >
+  + Tambah Satuan
+  </a>
+</div>
+<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+    <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+        <!-- Modal content -->
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                <span class="sr-only">Close modal</span>
+            </button>
+            
+            <div class="py-6 px-6 lg:px-8">
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">+ Tambah Satuan Barang</h3>
+                <form action="/kepgud/satuanbarang/tambahsatuanbarang" method=post>
+                    <div class="flex justify-between items-center">
+                        <div class="mx-1">
+                            <label for="id_satuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ID Satuan</label>
+                            <input type="number" name="id_satuan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Auto Generated">
+                        </div>
+                        <div class="mx-1">
+                            <label for="nama_satuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Satuan</label>
+                            <input type="text" name="nama_satuan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Nama Satuan" required autocomplete="off">
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="flex justify-between">
+                        <button type="submit" class="text-white bg-primary hover:bg-primary-darker focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-darker dark:focus:ring-primary-dark font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 transition duration-150">
+                            Tambah
+                        </button>
+                        <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-2 text-sm font-medium px-5 py-2.5 transition duration-150 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-primary-darker dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" data-modal-toggle="authentication-modal">
+                            Kembali
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+    </div>
+</div> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+          {% for row in satuanbarang %}
+          <div class="">
+            <!-- Nama Daftar Satuan -->
+             <div x-data="{ open: false }" class="ml-3 mr-20 transition-colors border-b dark:border-primary-darker flex justify-between items-center p-2 py-4">
+                 <div class="text-gray-800 dark:text-light">
+                     <span aria-hidden="true">
+                         <i class="bi bi-boxes"></i>
+                     </span>
+                     <span class="ml-2 text-base font-semibold"> {{ row.nama_satuan }} </span>
+                 </div>
+                 <!-- Button Vertical Dots -->
+                 <span 
+                     aria-hidden="true" 
+                     class="ml-auto"
+                     @click="open = !open; $nextTick(() => { if(open){ $refs.userMenu.focus() } })"
+                     role="button"
+                     type="button"
+                     aria-haspopup="true"
+                     :aria-expanded="open ? 'true' : 'false'"
+                 >
+                     <i class="bi bi-three-dots-vertical"></i>
+                 </span>
+                 <!-- User dropdown menu -->
+                 <div
+                     x-show="open"
+                     x-ref="userMenu"
+                     x-transition:enter="transition-all transform ease-out"
+                     x-transition:enter-start="translate-x-1/2 opacity-0"
+                     x-transition:enter-end="translate-x-0 opacity-100"
+                     x-transition:leave="transition-all transform ease-in"
+                     x-transition:leave-start="translate-x-0 opacity-100"
+                     x-transition:leave-end="translate-x-1/2 opacity-0"
+                     @click.away="open = false"
+                     @keydown.escape="open = false"
+                     class="absolute right-0 w-48 mx-28 items-end bg-white rounded-md shadow-lg border dark:border-primary-darker dark:bg-dark focus:outline-none"
+                     tabindex="-1"
+                     role="menu"
+                     aria-orientation="vertical"
+                     aria-label="User menu"
+                 >
+                     <a
+                         href="/kepgud/satuanbarang/editsatuan/{{ row.id_satuan }}"
+                         role="menuitem"
+                         class="block px-4 py-3 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                     >
+                         <i class="bi bi-pencil-square"></i> Edit
+                     </a>
+                     <a
+                         href="/kepgud/satuanbarang/hapussatuan/{{ row.id_satuan }}"
+                         role="menuitem"
+                         class="block px-4 py-3 text-sm text-gray-700 transition-colors hover:bg-gray-100 dark:text-light dark:hover:bg-primary"
+                     >
+                         <i class="bi bi-x-square"></i> Delete
+                     </a>
+                 </div>
+             </div>
+         </div>
+          {% endfor %}
+{% endblock %}

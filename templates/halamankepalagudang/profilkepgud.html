@@ -1,0 +1,78 @@
+{% extends 'halamankepalagudang/layout.html' %}
+<img src="{{ url_for('serve_img', img_id=r.id)}}">
+{% block title %}Profile{% endblock %}
+
+{% block content %}
+<!-- <h2>Halaman Profil</h2>
+<div>
+    <p>Detail Akun:</p>
+    <table>
+        <tr>
+            <td>Nama</td>
+            <td>{{ account['nama'] }}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{ account['email'] }}</td>
+        </tr>
+        <tr>
+            <td>NIP</td>
+            <td>{{ account['nip'] }}</td>
+        </tr>
+        <tr>
+            <td>Nama Jabatan</td>
+            <td>{{ account['nama_jabatan'] }}</td>
+        </tr>
+        <tr>
+            <td>Nomor Telepon</td>
+            <td>{{ account['nomor_tlp'] }}</td>
+        </tr>
+        <tr>
+            
+            <img src="{{ url_for('.static', filename='images/{{ fotopegawai }}') }}" width="200" height="200">
+        </tr>
+    </table>
+</div> -->
+<div class="flex justify-center mt-8">
+
+    <div class="lg:flex sm:w-96 rounded-lg lg:w-[950px] lg:h-[550px] bg-gray-500 sm:h-[900px]  ">
+        <div class="flex justify-between">
+            <div class="w-72 h-80 bg-transparent mt-10 ml-10">
+                <img src="/static/img/profile.png" alt="SMKN 11 BANDUNG" width="950px" height="900px">
+            </div>
+            
+        </div>
+        
+        <div class="text-black mt-10 ml-10">
+            <h1 class="text-3xl">Kepala Gudang</h1>
+            <div class="mt-5 text-xl">
+                <span class="">Nama :</span><br>
+                <span>{{ account['nama'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Email :</span><br>
+                <span>{{ account['email'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">NIP :</span><br>
+                <span>{{ account['nip'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Jabatan :</span><br>
+                <span>{{ account['nama_jabatan'] }}</span>
+            </div>
+            <div class="mt-5 text-xl">
+                <span class="">Nomor Telepon :</span><br>
+                <span>{{ account['nomor_tlp'] }}</span>
+            </div>
+        </div>
+            <div class="lg:ml-72 lg:mt-[475px] sm:mt-[10px]">
+                <div class="flex justify-end">
+                    <img src="/static/img/logosekolah.png" alt="SMKN 11 BANDUNG" width="80" >
+                </div>
+            </div>
+    </div>
+    <br/>
+</div>
+<br/>
+{% endblock %}

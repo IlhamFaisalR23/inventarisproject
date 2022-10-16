@@ -1,0 +1,55 @@
+{% extends 'halamankepalasekolah/layout.html' %}
+
+{% block title %}List Data{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
+  <a href="#">
+      <h1 class="text-2xl font-semibold"><i class="bi bi-arrow-left"></i> Daftar Permintaan</h1>
+  </a>
+
+  <!-- Tambah Barang -->
+  <div class="">
+  </div>
+</div>
+<br/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">Nama Jabatan</th>
+            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">Jumlah Pesan</th>
+            <th scope="col" class="py-3 px-6">Tanggal Pesan</th>
+            <th scope="col" class="py-3 px-6">Nama Pemesan</th>
+            <th scope="col" class="py-3 px-6">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in permintaans %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.nama_jabatan }}</td>
+            <td class="py-4 px-6">{{ row.namabarang }}</td>
+            <td class="py-4 px-6">{{ row.jumlahpesan }}</td>
+            <td class="py-4 px-6">{{ row.tanggalpesan }}</td>
+            <td class="py-4 px-6">{{ row.nama}}</td>
+            <td class="py-4 px-6"><a href="/kepsek/listpermintaan/accpermintaan/{{ row.id_permintaan }}" class="bg-primary dark:bg-primary text-white rounded-md mx-1 px-6 py-2 text-sm font-medium hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary" role="button" onclick="return confirm('Akan meng-acc permintaan ini?');"><i class="bi bi-check2-square"></i></a>
+              <a href="/kepsek/listpermintaan/tolakpermintaan/{{ row.id_permintaan }}" class="bg-primary dark:bg-primary text-white rounded-md mx-1 px-6 py-2 text-sm font-medium hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary" role="button" onclick="return confirm('Akan menolak permintaan ini?');"><i class="bi bi-envelope-slash"></i></a>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+          $('#mytable').dataTable();
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      </table>
+    
+</div>
+{% endblock %}

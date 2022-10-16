@@ -1,0 +1,24 @@
+{% extends 'halamankepalasekolah/layout.html' %}
+
+{% block title %}Tolak Pesanan{% endblock %}
+
+{% block content %}
+<form action="/kepsek/listpermintaan/tolakpermintaan/{{ row.id_permintaan }}" method=post>
+    <br>
+        <div class="card-body">
+                <div class="mb-3 row">
+                    <label for="alasan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alasan Penolakan:</label>
+                        <div class="col-sm-10">
+                    <input type="input" class="block p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-xs focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" name="alasan" required autocomplete="off">
+                        </div>
+                    </div>
+        </div>
+        <div class="card text-center">
+            <div class="card-footer text-muted">
+                <button type="submit" class="btn btn-warning">Confirm</button>
+        </div>
+        </div>
+      
+</form>
+
+{% endblock %}

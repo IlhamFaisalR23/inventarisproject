@@ -1,0 +1,32 @@
+{% extends "halamankepalagudang/layout.html" %}
+
+{% block title %}Edit Jabatan{% endblock %}
+
+{% block content %}
+<h1 class="text-2xl font-semibold"><a href="{{ url_for('daftarjabatan') }}"><i class="bi bi-arrow-left"></i> Info Jabatan</a></h1>
+<form action="/kepgud/daftarjabatan/editjabatan/{{ row.kode_jabatan }}" method=post>
+        <br>
+            <div class="card-body">
+                    <div class="mb-3 row">
+                        <label for="kode_jabatan" class="col-sm-2 col-form-label">kode Jabatan:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="kode_jabatan" value="{{ row.kode_jabatan }}" required autocomplete="off" disabled>
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="nama_jabatan" class="col-sm-2 col-form-label">Nama Jabatan:</label>
+                            <div class="col-sm-10">
+                                <input type="input" class="form-control" name="nama_jabatan" value="{{ row.nama_jabatan }}" required autocomplete="off">                             
+                                </div>
+                        </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                </form>
+            </div>
+            </div>
+          
+    
+{% endblock %}

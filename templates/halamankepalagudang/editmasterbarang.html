@@ -1,0 +1,66 @@
+{% extends "halamankepalagudang/layout.html" %}
+
+{% block title %}Edit Master Barang{% endblock %}
+
+{% block content %}
+<form action="/kepgud/daftarbarang/edit/{{ row.id_barang }}" method=post>
+        <br>
+            <div class="card-body">
+
+                <div class="mb-3 row">
+                    <label for="id_barang" class="col-sm-2 col-form-label">ID Barang:</label>
+                        <div class="col-sm-10">
+                    <input type="input" class="form-control" name="id_barang" value="{{ row[0] }}" required autocomplete="off">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                    <label for="id_stok" class="col-sm-2 col-form-label">ID Stok:</label>
+                        <div class="col-sm-10">
+                    <input type="input" class="form-control" name="id_stok" value="{{ row[1] }}" required autocomplete="off">
+                        </div>
+                    </div>
+            
+                    <div class="mb-3 row">
+                        <label for="id_kategori" class="col-sm-2 col-form-label">ID Kategori:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="id_kategori" value="{{ row[2] }}" required autocomplete="off">
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="id_satuan" class="col-sm-2 col-form-label">ID Satuan:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="id_satuan" value="{{ row[3] }}" required autocomplete="off">
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="namabarang" class="col-sm-2 col-form-label">Nama Barang:</label>
+                                <div class="col-sm-10">
+                            <input type="input" class="form-control" name="namabarang" value="{{ row[4] }}" required autocomplete="off">
+                                </div>
+                            </div>
+            
+                    <div class="mb-3 row">
+                        <label for="merk" class="col-sm-2 col-form-label">Merk Barang:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="merk" value="{{ row[5] }}" required autocomplete="off">
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="idsumberdana" class="col-sm-2 col-form-label">ID Sumber Dana:</label>
+                            <div class="col-sm-10">
+                                <input type="input" class="form-control" name="idsumberdana" value="{{ row[6] }}" required autocomplete="off">                             
+                                </div>
+                        </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-warning">Update</button>
+            </div>
+            </div>
+          
+    </form>
+{% endblock %}

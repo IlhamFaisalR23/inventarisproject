@@ -1,0 +1,31 @@
+{% extends "halamankepalagudang/layout.html" %}
+
+{% block title %}Edit Sumber Dana{% endblock %}
+
+{% block content %}
+<form action="/kepgud/sumberdana/editsumberdana/{{ row.idsumberdana }}" method=post>
+        <br>
+            <div class="card-body">
+                    <div class="mb-3 row">
+                        <label for="idsumberdana" class="col-sm-2 col-form-label">ID Sumber Dana:</label>
+                            <div class="col-sm-10">
+                        <input type="input" class="form-control" name="idsumberdana" value="{{ row.idsumberdana }}" required autocomplete="off" disabled>
+                            </div>
+                        </div>
+            
+                    <div class="mb-3 row">
+                        <label for="namasumberdana class="col-sm-2 col-form-label">Nama Sumber Dana:</label>
+                            <div class="col-sm-10">
+                                <input type="input" class="form-control" name="namasumberdana" value="{{ row.namasumberdana }}" required autocomplete="off">                             
+                                </div>
+                        </div>
+            </div>
+            <div class="card text-center">
+                <div class="card-footer text-muted">
+                    <button type="submit" class="btn btn-warning">Update</button>
+                    <button onclick="history.back()" class="btn btn-secondary">Cancel</button>
+            </div>
+            </div>
+          
+    </form>
+{% endblock %}

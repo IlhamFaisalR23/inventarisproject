@@ -1,0 +1,305 @@
+{% extends "halamankepalagudang/templatetambah.html" %}
+
+{% block title %}Tambah Master Barang{% endblock %}
+
+{% block content %}
+<br/>
+
+<a href="{{ url_for('daftarbarang') }}" class="tombolback"><img src="{{ url_for('static', filename='img/icon/Back.png') }}" width="65" height="65"></a>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css" />
+
+<form action="/kepgud/daftarbarang/tambahbarang" method=post>
+        <br>
+        <div class="card-body">
+            <div class="mb-3 row">
+                <label for="id_stok" class="col-sm-2 col-form-label">ID Stok:</label>
+                    <div class="col-sm-10">
+                <input type="input" class="form-control" placeholder="ID Stok" name="id_stok" required autocomplete="off">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="stok" class="col-sm-2 col-form-label">Jumlah Stok:</label>
+                    <div class="col-sm-10">
+                <input type="input" class="form-control" placeholder="Jumlah Stok" name="stok" required autocomplete="off">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="jml_barang_msk" class="col-sm-2 col-form-label">Jumlah Barang Masuk:</label>
+                    <div class="col-sm-10">
+                <input type="input" class="form-control" placeholder="Jumlah Barang Masuk" name="jml_barang_msk" required autocomplete="off">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="hrg_satuan" class="col-sm-2 col-form-label">Harga Satuan:</label>
+                    <div class="col-sm-10">
+                <input type="input" class="form-control" placeholder="Harga Satuan" name="hrg_satuan" required autocomplete="off">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="total" class="col-sm-2 col-form-label">Total Harga:</label>
+                    <div class="col-sm-10">
+                <input type="input" class="form-control" placeholder="Total Harga" name="total" required autocomplete="off">
+                    </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="id_supplier" class="col-sm-2 col-form-label">ID Supplier:</label>
+                    <div class="col-sm-10">
+                        <select name="id_supplier" data-live-search="true" id="data_supplier" class="form-control" title="ID Supplier"> 
+                            {% for row in supplier %}
+                            <option value="{{row.id_supplier}}">{{ row.namasupplier }}</option>
+                            {% endfor %}
+                            </select>               
+                          </div>
+                </div>
+            <div class="mb-3 row">
+                <label for="id_rak" class="col-sm-2 col-form-label">ID Rak:</label>
+                    <div class="col-sm-10">
+                        <select name="id_rak" data-live-search="true" id="rak_barang" class="form-control" title="ID Rak"> 
+                            {% for row in rak %}
+                            <option value="{{row.id_rak}}">{{ row.nama_rak }}</option>
+                            {% endfor %}
+                            </select>                 
+                          </div>
+                </div>
+        </div>
+        <!--Stok Barang-->
+<br>
+<div class="mb-3 row">
+    <label for="id_barang" class="col-sm-2 col-form-label">ID Barang:</label>
+        <div class="col-sm-10">
+    <input type="input" class="form-control" placeholder="ID Barang" name="id_barang" required autofocus autocomplete="off">
+        </div>    
+    </div>
+
+    <div class="mb-3 row">
+    <label for="id_stok" class="col-sm-2 col-form-label">ID Stok:</label>
+        <div class="col-sm-10">
+    <input type="input" class="form-control" placeholder="ID Stok" name="id_stok" required autocomplete="off">
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        
+        <label for="id_kategori" class="col-sm-2 col-form-label">ID Kategori:</label>
+            <div class="col-sm-10">
+                <select name="id_kategori" data-live-search="true" id="car_brand" class="form-control" title="Kategori"> 
+                    {% for row in daftarbarang %}
+                    <option value="{{row.id_kategori}}">{{row.namakategori}}</option>
+                    {% endfor %}
+                    </select>                  
+                 </div>
+        </div>
+    <div class="mb-3 row">
+        <label for="id_satuan" class="col-sm-2 col-form-label">ID Satuan:</label>
+            <div class="col-sm-10">
+                <select name="id_satuan" data-live-search="true" id="satuan_barang" class="form-control" title="Satuan"> 
+                    {% for row in satuanbarang %}
+                    <option value="{{row.id_satuan}}">{{row.nama_satuan}}</option>
+                    {% endfor %}
+                    </select>                          
+                </div>
+        </div>
+
+    <div class="mb-3 row">
+        <label for="namabarang" class="col-sm-2 col-form-label">Nama Barang:</label>
+            <div class="col-sm-10">
+        <input type="input" class="form-control" placeholder="Nama Barang" name="namabarang" required autocomplete="off">
+            </div>
+        </div>
+    <div class="mb-3 row">
+        <label for="merk" class="col-sm-2 col-form-label">Merk:</label>
+            <div class="col-sm-10">
+        <input type="input" class="form-control" placeholder="Merk Barang" name="merk" required autocomplete="off">
+            </div>
+        </div>
+    <div class="mb-3 row">
+        <label for="idsumberdana" class="col-sm-2 col-form-label">ID Sumber Dana:</label>
+            <div class="col-sm-10">
+                <select name="idsumberdana" data-live-search="true" id="sumber_dana" class="form-control" title="ID Sumber Dana"> 
+                    {% for row in sumberdana %}
+                    <option value="{{row.idsumberdana}}">{{ row.namasumberdana }}</option>
+                    {% endfor %}
+                    </select>                        
+                </div>
+        </div>
+        
+        <div class="card text-center">
+            <div class="card-footer text-muted">
+                <button type="submit" class="btn btn-primary">Save</button>
+        </div>
+        </div>
+        
+          
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#car_brand").selectpicker();
+
+            $("#car_models").selectpicker();
+
+            function load_data(type, category_id) {
+                $.ajax({
+                    url: "/dropdown",
+                    method: "POST",
+                    data: { type: type, category_id: category_id },
+                    dataType: "json",
+                    success: function (data) { //alert(category_id)
+                        var html = "";
+                        for (var count = 0; count < data.length; count++) {
+                            html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                        }
+                        if (type == "carData") {
+                            $("#car_brand").html(html);
+                            $("#car_brand").selectpicker("refresh");
+                        } else {
+                            $("#car_models").html(html);
+                            $("#car_models").selectpicker("refresh");
+                        }
+                    },
+                });
+            }
+
+            $(document).on("change", "#car_brand", function () {
+                var category_id = $("#car_brand").val();
+                load_data("carModeldata", category_id);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#rak_barang").selectpicker();
+
+            $("#car_models").selectpicker();
+
+            function load_data(type, category_id) {
+                $.ajax({
+                    url: "/dropdown",
+                    method: "POST",
+                    data: { type: type, category_id: category_id },
+                    dataType: "json",
+                    success: function (data) { //alert(category_id)
+                        var html = "";
+                        for (var count = 0; count < data.length; count++) {
+                            html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                        }
+                        if (type == "carData") {
+                            $("#rak_barang").html(html);
+                            $("#rak_barang").selectpicker("refresh");
+                        } else {
+                            $("#car_models").html(html);
+                            $("#car_models").selectpicker("refresh");
+                        }
+                    },
+                });
+            }
+
+            $(document).on("change", "#rak_barang", function () {
+                var category_id = $("#rak_barang").val();
+                load_data("carModeldata", category_id);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#data_supplier").selectpicker();
+
+            $("#car_models").selectpicker();
+
+            function load_data(type, category_id) {
+                $.ajax({
+                    url: "/dropdown",
+                    method: "POST",
+                    data: { type: type, category_id: category_id },
+                    dataType: "json",
+                    success: function (data) { //alert(category_id)
+                        var html = "";
+                        for (var count = 0; count < data.length; count++) {
+                            html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                        }
+                        if (type == "carData") {
+                            $("#data_supplier").html(html);
+                            $("#data_supplier").selectpicker("refresh");
+                        } else {
+                            $("#car_models").html(html);
+                            $("#car_models").selectpicker("refresh");
+                        }
+                    },
+                });
+            }
+
+            $(document).on("change", "#data_supplier", function () {
+                var category_id = $("#data_supplier").val();
+                load_data("carModeldata", category_id);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#satuan_barang").selectpicker();
+
+            $("#car_models").selectpicker();
+
+            function load_data(type, category_id) {
+                $.ajax({
+                    url: "/dropdown",
+                    method: "POST",
+                    data: { type: type, category_id: category_id },
+                    dataType: "json",
+                    success: function (data) { //alert(category_id)
+                        var html = "";
+                        for (var count = 0; count < data.length; count++) {
+                            html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                        }
+                        if (type == "carData") {
+                            $("#satuan_barang").html(html);
+                            $("#satuan_barang").selectpicker("refresh");
+                        } else {
+                            $("#car_models").html(html);
+                            $("#car_models").selectpicker("refresh");
+                        }
+                    },
+                });
+            }
+
+            $(document).on("change", "#satuan_barang", function () {
+                var category_id = $("#satuan_barang").val();
+                load_data("carModeldata", category_id);
+            });
+        });
+
+        $(document).ready(function () {
+            $("#sumber_dana").selectpicker();
+
+            $("#car_models").selectpicker();
+
+            function load_data(type, category_id) {
+                $.ajax({
+                    url: "/dropdown",
+                    method: "POST",
+                    data: { type: type, category_id: category_id },
+                    dataType: "json",
+                    success: function (data) { //alert(category_id)
+                        var html = "";
+                        for (var count = 0; count < data.length; count++) {
+                            html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                        }
+                        if (type == "carData") {
+                            $("#sumber_dana").html(html);
+                            $("#sumber_dana").selectpicker("refresh");
+                        } else {
+                            $("#car_models").html(html);
+                            $("#car_models").selectpicker("refresh");
+                        }
+                    },
+                });
+            }
+
+            $(document).on("change", "#sumber_dana", function () {
+                var category_id = $("#sumber_dana").val();
+                load_data("carModeldata", category_id);
+            });
+        });
+    </script>
+{% endblock %}

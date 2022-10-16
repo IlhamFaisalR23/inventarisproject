@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Eventory</title>
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+        <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <form action="{{ url_for('loginkepsek') }}" method="post" id="login-form">
+    <body>
+        <div class="flex items-center bg-gray-50">
+            <div class="flex-1 max-w-full bg-white ">
+                <div class="flex flex-col md:flex-row">
+                    <div class="h-full w-full md:h-full md:w-7/8">
+                        <img class="object-cover w-full h-full" src="https://source.unsplash.com//1600x1300"
+                        alt="img" />
+                        
+                    </div>
+                    <div class="flex items-center h-full justify-center sm:p-12 md:w-1/2">
+                        <div class="w-full">
+                            <div class="flex justify-center">
+                                <img class="mb-5" src="/static/img/Logo.png" width="75px" alt="">
+                            </div>
+                            <h1 class="mb-2 text-2xl font-bold text-center text-gray-700">
+                                Login
+                            </h1>
+                            <div>
+                                <label class="block text-sm">
+                                    Email
+                                </label>
+                                <input type="email"
+                                    class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    placeholder="" name="email" id="email"/>
+                            </div>
+                            <div>
+                                <label class="block mt-4 text-sm">
+                                    Password
+                                </label>
+                                <input
+                                    class="w-full px-4 py-2 text-sm border rounded-md focus:border-blue-400 focus:outline-none focus:ring-1 focus:ring-blue-600"
+                                    placeholder="" name="nip" id="myInput" type="password" />
+                            </div>
+                            <div class="mt-4">
+
+                                <button id="dropdownDividerButton" data-dropdown-toggle="dropdownDivider" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Jabatan <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+                            
+                            <!-- Dropdown menu -->
+                            <div id="dropdownDivider" class="hidden z-10 w-44 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+                            <ul class="py-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownDividerButton">
+                            <li>
+                            <a href="{{ url_for('loginkepsek') }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kepala Sekolah</a>
+                            </li>
+                            <li>
+                            <a href="{{ url_for('loginpegawai') }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kepala Jurusan</a>
+                            </li>
+                            <li>
+                            <a href="{{ url_for('loginkepgud') }}" class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Kepala Gudang</a>
+                            </li>
+                            </ul>
+                            </div>
+                            </div>
+                            <br/>
+                            <input type="checkbox" onclick="myFunction()">Show Password
+                            <button
+                            class="block w-full px-4 py-2 mt-4 text-sm font-medium leading-5 text-center transition-colors duration-150 bg-blue-600 border border-transparent rounded-lg active:bg-blue-600 hover:bg-blue-700 focus:outline-none focus:shadow-outline-blue"
+                            href="#" style="color:white;">
+                            Log in
+                        </button>
+                        
+                        <div class="">
+
+                        </div>
+                        <div class="flex justify-center">
+                            <p class="mt-4">
+                                Tidak Punya Akun
+                                <a class="text-sm text-black hover:underline" href="{{ url_for('register') }}">
+                                    Register!
+                                </a>
+                            </p>
+                        </div>
+
+                            <hr class="my-8" />
+
+
+                            <div class="flex items-end justify-center text-xs gap-4 opacity-50 ">
+                                all right reserved © Copyright 2022, Inventory, 
+                            </div>
+                           <p class="flex justify-center opacity-50 text-xs ">
+                            created by Moonware  
+                        </p> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </form>
+      <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
+      <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    </body>
+</html>

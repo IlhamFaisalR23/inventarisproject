@@ -1,0 +1,52 @@
+{% extends 'halamankepalagudang/layout.html' %}
+
+{% block title %}List Data{% endblock %}
+
+{% block content %}
+<h2>Daftar Permintaan Barang</h2>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">ID Permintaan</th>
+            <th scope="col" class="py-3 px-6">ID Unit Kerja</th>
+            <th scope="col" class="py-3 px-6">Nama Jabatan</th>
+            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">Jumlah Pesan</th>
+            <th scope="col" class="py-3 px-6">Tanggal Pesan</th>
+            <th scope="col" class="py-3 px-6">Nama Pemesan</th>
+            <th scope="col" class="py-3 px-6">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in permintaans %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.0 }}</td>
+            <td class="py-4 px-6">{{ row.1 }}</td>
+            <td class="py-4 px-6">{{ row.16 }}</td>
+            <td class="py-4 px-6">{{ row.12 }}</td>
+            <td class="py-4 px-6">{{ row.5 }}</td>
+            <td class="py-4 px-6">{{ row.6 }}</td>
+            <td class="py-4 px-6">{{ row.19 }}</td>
+            <td class="py-4 px-6"><a href="/kepgud/listpermintaan/barangsiap/{{ row[0] }}" onclick="return confirm('Ubah status pesanan menjadi Siap Diambil?');" role="button"><i class="bi bi-box-seam">Siap Diambil</i></a>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+          $('#mytable').dataTable();
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      </table>
+    
+</div>
+{% endblock %}

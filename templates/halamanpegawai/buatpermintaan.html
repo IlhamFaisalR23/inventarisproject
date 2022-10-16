@@ -1,0 +1,121 @@
+{% extends 'halamanpegawai/layout.html' %}
+
+{% block content %}
+
+<main>
+     <!-- Content header -->
+     <div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
+        <h1 class="text-2xl font-semibold">Order Barang</h1>
+
+        <!-- Category Select -->
+        <div class="mx-10 my-3">
+          <button 
+              id="dropdownRadioBgHoverButton" 
+              data-dropdown-toggle="dropdownRadioBgHover" 
+              class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary focus:ring-offset-white dark:focus:ring-offset-dark font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-dark dark:focus:primary" 
+              type="button"
+          >
+              Category <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </button>
+  
+        <!-- Category Dropdown menu -->
+        <div id="dropdownRadioBgHover" class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+            <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="default-radio-4" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">Order Barang</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <input checked id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="default-radio-5" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">Category</label>
+                </div>
+            </li>
+            <li>
+                <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                    <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+                    <label for="default-radio-6" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">Kebersihan</label>
+                </div>
+            </li>
+            </ul>
+        </div>
+        </div>
+      </div>
+
+      <div class="flex justify-beetween">
+        <div class="mx-10 flex items-center justify-between">
+          <h1 class="text-2xl font-semibold">Nama Category</h1>
+          <div class="pt-2 relative mx-auto text-gray-500">
+            <input class="border-1 border-gray-300 bg-white dark:bg-darker dark:border-primary-darker h-10 px-5 pr-16 rounded-full text-sm focus:outline-none" type="search" name="search" placeholder="Search">
+            <button type="submit" class="absolute right-0 top-0 mt-5 mr-4">
+              <svg class="text-gray-500 h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px"
+                viewBox="0 0 56.966 56.966" style="enable-background:new 0 0 56.966 56.966;" xml:space="preserve"
+                width="512px" height="512px">
+                <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Content Main -->
+      <div class="container grid grid-cols-2 gap-6 pt-4 pb-16">
+        
+        <!-- products -->
+        {% for row in daftarbarang %}
+        <div class="col-span-3 grid">
+            <!-- Main Order Barang -->
+            <div class="grid grid-cols-3 gap-6">
+
+                <div class="bg-white border dark:bg-darker dark:border-primary-darker shadow rounded overflow-hidden group">
+                    <div class="relative">
+                        <img src="https://stackdiary.com/140x100.png" alt="product 1" class="w-full">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center 
+                        justify-center gap-2 opacity-0 group-hover:opacity-100 transition">
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="view product">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </a>
+                            <a href="#"
+                                class="text-white text-lg w-9 h-8 rounded-full bg-primary flex items-center justify-center hover:bg-gray-800 transition"
+                                title="add to wishlist">
+                                <i class="fa-solid fa-heart"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="pt-4 pb-3 px-4">
+                        <a href="#">
+                            <h4 class="uppercase font-medium text-xl mb-2 text-gray-800 hover:text-primary transition dark:text-white dark:hover:text-darker">
+                              {{ row.namabarang }}</h4>
+                        </a>
+                        <div class="flex items-baseline mb-1 space-x-2">
+                            <p class="text-base text-primary font-semibold">Stok : {{ row.stok }}</p>
+                            <p class="text-sm text-gray-400">Satuan Barang : {{ row.nama_satuan }}</p>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="flex gap-1 text-sm text-yellow-400">
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                                <span><i class="fa-solid fa-star"></i></span>
+                            </div>
+                            <div class="text-xs text-gray-500 ml-3">(150)</div>
+                        </div>
+                    </div>
+                    <a href="/pegawai/homepegawai/buatpermintaan/orderbarang/{{ row.id_barang }}"
+                        class="block w-full py-2 text-center text-white bg-primary hover:border hover:border-primary rounded-b hover:bg-transparent hover:text-primary transition">
+                        Order</a>
+                </div>
+
+            </div>
+        </div>
+        {% endfor %}
+        <!-- ./products -->
+    </div>
+</main>
+
+{% endblock %}

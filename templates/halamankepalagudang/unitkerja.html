@@ -1,0 +1,129 @@
+{% extends 'halamankepalagudang/layout.html' %}
+
+{% block title %}Unit Kerja{% endblock %}
+
+{% block content %}
+<div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
+  <a href="#">
+      <h1 class="text-2xl font-semibold"><i class="bi bi-arrow-left"></i> Daftar Unit Kerja</h1>
+  </a>
+
+  <!-- Tambah Unit Kerja -->
+  <div class="">
+      <a
+          href="#"
+          class="px-4 py-2 mx-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+          type="" data-modal-toggle="authentication-modal"
+          >
+          + Tambah Unit Kerja
+      </a>
+  </div>
+</div>
+<div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+  <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+      <!-- Modal content -->
+      <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+          <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-toggle="authentication-modal">
+              <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+              <span class="sr-only">Close modal</span>
+          </button>
+          <div class="py-6 px-6 lg:px-8">
+              <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">+ Tambah Unit Kerja</h3>
+              <form class="space-y-6" action="/kepgud/unitkerja/tambahunitkerja" method=POST>
+                  <div class="flex justify-between items-center">
+                      <div class="mx-1">
+                          <label for="id_unitkerja" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ID Unit Kerja</label>
+                          <input type="number" name="id_unitkerja" id="id_unitkerja" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Auto Generated">
+                      </div>
+                      <div class="mx-1">
+                          <label for="nama" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Nama Unit Kerja</label>
+                          <input type="text" name="nama" id="nama" placeholder="Nama Unit Kerja" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                      </div>
+                  </div>
+                  <div class="flex justify-between items-center">
+                      <div class="mx-1">
+                          <label for="alamat" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Alamat</label>
+                          <input type="text" name="alamat" id="alamat" placeholder="Alamat" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                      </div>
+                  </div>
+                  <div>
+                      <label for="kontak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Kontak</label>
+                      <div class="flex items-center">
+                          <input type="text" name="no_telp" id="no_telp" placeholder="Nomor Telepon" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                          <input type="text" name="no_fax" id="no_fax" placeholder="Nomor Fax" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                      </div>
+                  </div>
+                  <div>
+                      <div class="flex justify-between items-center">
+                          <input type="text" name="email" id="email" placeholder="Email" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                          <input type="text" name="web" id="web" placeholder="Web" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                      </div>
+                  </div>
+                  <div class="flex justify-between items-center">
+                    <div class="mx-1">
+                        <label for="cabang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Cabang</label>
+                        <input type="text" name="cabang" id="cabang" placeholder="Cabang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                    </div>
+                </div>
+                  <div class="flex justify-between">
+                      <button type="submit" class="text-white bg-primary hover:bg-primary-darker focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-darker dark:focus:ring-primary-dark font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 transition duration-150">
+                          Tambah
+                      </button>
+                      <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-2 text-sm font-medium px-5 py-2.5 transition duration-150 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-primary-darker dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" data-modal-toggle="authentication-modal">
+                          Kembali
+                      </button>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div> 
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">ID Unit Kerja</th>
+            <th scope="col" class="py-3 px-6">Nama Unit Kerja</th>
+            <th scope="col" class="py-3 px-6">Alamat</th>
+            <th scope="col" class="py-3 px-6">Nomor Telepon</th>
+            <th scope="col" class="py-3 px-6">Nomor Fax</th>
+            <th scope="col" class="py-3 px-6">Email</th>
+            <th scope="col" class="py-3 px-6">Web</th>
+            <th scope="col" class="py-3 px-6">Cabang</th>
+            <th scope="col" class="py-3 px-6">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in unitkerja %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.id_unitkerja }}</td>
+            <td class="py-4 px-6">{{ row.nama }}</td>
+            <td class="py-4 px-6">{{ row.alamat }}</td>
+            <td class="py-4 px-6">{{ row.no_telp }}</td>
+            <td class="py-4 px-6">{{ row.no_fax }}</td>
+            <td class="py-4 px-6">{{ row.email }}</td>
+            <td class="py-4 px-6">{{ row.web }}</td>
+            <td class="py-4 px-6">{{ row.cabang }}</td>
+            <td class="py-4 px-6">
+                <a href="#" onclick="return confirm('Are you sure you want to delete?');" role="button"><i class="bi bi-trash"></i></a>
+                <a href="#" role="button"><i class="bi bi-pencil-square"></i></a>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+          $('#mytable').dataTable();
+      </script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      </table>
+    
+</div>
+{% endblock %}

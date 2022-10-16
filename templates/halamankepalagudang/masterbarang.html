@@ -1,0 +1,402 @@
+{% extends 'halamankepalagudang/layout.html' %}
+
+{% block title %}Daftar Barang{% endblock %}
+
+{% block content %}
+
+<div class="flex items-center justify-between px-4 py-4 border-b lg:py-6 dark:border-primary-darker">
+  <h1 class="text-2xl font-semibold"><i class="bi bi-arrow-left"></i> Daftar Barang</h1>
+
+  <!-- Tambah Barang -->
+  <div class="">
+    <a
+    href="#"
+    class="px-4 py-2 mx-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+    type="" data-modal-toggle="authentication-modal"
+    >
+    + Tambah Barang
+</a>
+
+      <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+       
+        <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+            <br/>
+       <br/>
+       <br/>
+            <br/>
+       <br/>
+       <br/>
+            <br/>
+       <br/>
+       <br/>
+            <br/>
+       <br/>
+       <br/>
+            <br/>
+       <br/>
+            <div class="py-6 px-6 lg:px-8">
+                
+                <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">+ Tambah Data Barang</h3>
+                <div class="py-6 px-6 lg:px-8">
+            <form class="space-y-6" action="/kepgud/daftarbarang/tambahbarang" method=post>
+                        <div class="flex justify-between items-center">
+                            <div class="mx-1">
+                                <label for="id_stok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ID Stok</label>
+                                <input type="text" name="id_stok" id="id_stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="ID Stok" required autocomplete="off">
+                            </div>
+                            <div class="mx-1">
+                                <label for="stok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Jumlah Stok</label>
+                                <input type="number" name="stok" id="stok" placeholder="Jumlah Stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" required autocomplete="off">
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div class="mx-1">
+                                <label for="jml_barang_msk" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Jumlah Barang Masuk</label>
+                                <input type="number" name="jml_barang_msk" id="jml_barang_msk" placeholder="Jumlah Barang Masuk" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                          </div>
+                            <div class="mx-1">
+                                <label for="hrg_satuan" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Harga Satuan</label>
+                                <input type="number" name="hrg_satuan" id="hrg_satuan" placeholder="Harga Satuan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center">
+                                <div class="mx-1">
+                                    <label for="total" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Total Harga</label>
+                                    <input type="number" name="total" id="total" placeholder="Total Harga" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                                </div>
+                                <div class="mx-1">
+                                    <label for="id_supplier" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Supplier</label>
+                                    <select name="id_supplier" data-live-search="true" id="car_brand" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"  title="Supplier"> 
+                                        {% for supplier in supplier %}
+                                        <option value="{{supplier.id_supplier}}">{{supplier.namasupplier}}</option>
+                                        {% endfor %}
+                                        </select>                             
+                                    </div>
+                                    
+                                <div class="mx-1">
+                                    <label for="rak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Rak</label>
+                                    <select name="id_rak" data-live-search="true" id="car_brand" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" title="Supplier"> 
+                                        {% for rak in rak %}
+                                        <option value="{{rak.id_rak}}">{{rak.nama_rak}}</option>
+                                        {% endfor %}
+                                        </select>                               
+                                      </div>
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300" for="file_input">Upload image</label>
+                            <input class="block w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 cursor-pointer dark:text-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="file_input_help" id="file_input"  type="file">
+                            <p class="mt-1 text-xs text-gray-500 dark:text-gray-300" id="file_input_help">PNG, JPG or GIF (MAX. 800x400px).</p>
+                        </div>
+                
+                    <div class="flex justify-between items-center">
+                        <div class="mx-1">
+                            <label for="id_barang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ID Barang</label>
+                            <input type="number" name="id_barang" id="id_barang" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="Auto Generated">
+                        </div>
+                        <div class="mx-1">
+                            <label for="id_stok" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">ID Stok</label>
+                            <input type="text" name="id_stok" id="id_stok" placeholder="ID Stok" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="mx-1">
+                            <label for="kategori" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Kategori</label>
+                            <select name="id_kategori" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" title="Kategori"> 
+                                {% for kategoribarang in kategoribarang %}
+                                <option value="{{kategoribarang.id_kategori}}">{{kategoribarang.namakategori}}</option>
+                                {% endfor %}
+                                </select>                             
+                            </div>
+                        <div class="mx-1">
+                            <label for="rak" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Satuan</label>
+                            <select name="id_satuan" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" title="Kategori"> 
+                                {% for satuanbarang in satuanbarang %}
+                                <option value="{{satuanbarang.id_satuan}}">{{satuanbarang.nama_satuan}}</option>
+                                {% endfor %}
+                                </select>                           
+                            </div>
+                    </div>
+                    <div>
+                        <label for="namabarang" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Barang</label>
+                        <div class="flex items-center">
+                            <input type="text" name="namabarang" id="namabarang" placeholder="Nama Barang" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                            <input type="text" name="merk" id="merk" placeholder="Merk Barang" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" autocomplete="off" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="jumlah" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Sumber Dana</label>
+                        <div class="flex justify-between items-center">
+                            <select name="idsumberdana" data-live-search="true" id="sumber_dana" class="mx-1 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" title="Sumber Dana"> 
+                                {% for sumberdana in sumberdana %}
+                                <option value="{{sumberdana.idsumberdana}}">{{ sumberdana.namasumberdana }}</option>
+                                {% endfor %}
+                                </select>                         </div>
+                    </div>
+                    <br/>
+                    <div class="flex justify-between">
+                        <button type="submit" class="text-white bg-primary hover:bg-primary-darker focus:ring-4 focus:outline-none focus:ring-primary dark:bg-primary dark:hover:bg-primary-darker dark:focus:ring-primary-dark font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2 transition duration-150">
+                            Tambah
+                        </button>
+                        <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border-2 text-sm font-medium px-5 py-2.5 transition duration-150 hover:text-gray-900 focus:z-10 dark:bg-gray-700 dark:text-gray-300 dark:border-primary-darker dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-600" data-modal-toggle="authentication-modal">
+                            Kembali
+                        </button>
+                    </div>
+                </form>
+            </div>
+            </div>
+        </form>
+        </div>
+    </div> 
+  <!-- Sumber Dana -->
+  <button 
+      id="dropdownRadioBgHoverButton" 
+      data-dropdown-toggle="dropdownRadioBgHover" 
+      class="text-white bg-primary hover:bg-primary-dark focus:ring-4 focus:outline-none focus:ring-primary focus:ring-offset-white dark:focus:ring-offset-dark font-medium rounded-lg text-sm px-3 py-2 text-center inline-flex items-center dark:bg-primary dark:hover:bg-primary-dark dark:focus:primary" 
+      type="button"
+  >
+      Sumber Dana <svg class="ml-2 w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+  </button>
+
+  <!-- SumberDana Dropdown menu -->
+  <div id="dropdownRadioBgHover" class="hidden z-10 w-48 bg-white rounded divide-y divide-gray-100 shadow dark:bg-gray-700 dark:divide-gray-600">
+      <ul class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownRadioBgHoverButton">
+      <li>
+          <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input id="default-radio-4" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+              <label for="default-radio-4" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">Sumber Dana</label>
+          </div>
+      </li>
+      <li>
+          <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input checked id="default-radio-5" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+              <label for="default-radio-5" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">BOS</label>
+          </div>
+      </li>
+      <li>
+          <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+              <input id="default-radio-6" type="radio" value="" name="default-radio" class="w-4 h-4 text-primary-dark bg-gray-100 border-gray-300 focus:ring-primary dark:focus:ring-primary-dark dark:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
+              <label for="default-radio-6" class="ml-2 w-full text-sm font-medium text-gray-900 rounded dark:text-gray-300">BOPD</label>
+          </div>
+      </li>
+      </ul>
+  </div>
+</div>
+</div><br/>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.jqueryui.min.css" />
+<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+<div>
+    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400" style="width: 100%;" id="mytable">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-darker dark:text-gray-400">
+          <tr>
+            <th scope="col" class="py-3 px-6">ID Barang</th>
+            <th scope="col" class="py-3 px-6">Nama Barang</th>
+            <th scope="col" class="py-3 px-6">ID Stok</th>
+            <th scope="col" class="py-3 px-6">ID Kategori</th>
+            <th scope="col" class="py-3 px-6">ID Satuan</th>
+            <th scope="col" class="py-3 px-6">Merk</th>
+            <th scope="col" class="py-3 px-6">Sumber Dana</th>
+            <th scope="col" class="py-3 px-6">Rak</th>
+            <th scope="col" class="py-3 px-6">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for row in permintaans %}
+          <tr class="bg-white border-b dark:bg-dark border-gray-700">
+            <td scope="row" class="py-4 px-6 font-medium whitespace-nowrap text-gray-800 dark:text-white">{{ row.id_barang }}</td>
+            <td class="py-4 px-6">{{ row.namabarang }}</td>
+            <td class="py-4 px-6">{{ row.id_stok }}</td>
+            <td class="py-4 px-6">{{ row.id_kategori }}</td>
+            <td class="py-4 px-6">{{ row.id_satuan }}</td>
+            <td class="py-4 px-6">{{ row.merk }}</td>
+            <td class="py-4 px-6">{{ row.namasumberdana }}</td>
+            <td class="py-4 px-6">{{ row.nama_rak }}</td>
+            <td class="py-4 px-6"><a href="/kepgud/daftarbarang/detailbarang/{{ row.id_barang }}" class="bg-primary dark:bg-primary text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary" role="button"><i class="bi bi-eye"></i></a>
+                <a href="/kepgud/daftarbarang/hapusbarang/{{ row.id_barang }}" class="bg-primary dark:bg-primary text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary" data-modal-toggle="popup-modal" onclick="return confirm('Are you sure you want to delete?');" role="button"><i class="bi bi-trash"></i></a>
+                <a href="/kepgud/daftarbarang/edit/{{ row.id_barang }}" class="bg-primary dark:bg-primary text-white rounded-md px-6 py-2 text-sm font-medium hover:bg-primary-dark dark:hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary" role="button"><i class="bi bi-pencil-square"></i></a>
+          </tr>
+          {% endfor %}
+        </tbody>
+        <script>
+            $(document).ready(function () {
+                $("#car_brand").selectpicker();
+    
+                $("#car_models").selectpicker();
+    
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/dropdown",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "carData") {
+                                $("#car_brand").html(html);
+                                $("#car_brand").selectpicker("refresh");
+                            } else {
+                                $("#car_models").html(html);
+                                $("#car_models").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+    
+                $(document).on("change", "#car_brand", function () {
+                    var category_id = $("#car_brand").val();
+                    load_data("carModeldata", category_id);
+                });
+            });
+    
+            $(document).ready(function () {
+                $("#rak_barang").selectpicker();
+    
+                $("#car_models").selectpicker();
+    
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/dropdown",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "carData") {
+                                $("#rak_barang").html(html);
+                                $("#rak_barang").selectpicker("refresh");
+                            } else {
+                                $("#car_models").html(html);
+                                $("#car_models").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+    
+                $(document).on("change", "#rak_barang", function () {
+                    var category_id = $("#rak_barang").val();
+                    load_data("carModeldata", category_id);
+                });
+            });
+    
+            $(document).ready(function () {
+                $("#data_supplier").selectpicker();
+    
+                $("#car_models").selectpicker();
+    
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/dropdown",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "carData") {
+                                $("#data_supplier").html(html);
+                                $("#data_supplier").selectpicker("refresh");
+                            } else {
+                                $("#car_models").html(html);
+                                $("#car_models").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+    
+                $(document).on("change", "#data_supplier", function () {
+                    var category_id = $("#data_supplier").val();
+                    load_data("carModeldata", category_id);
+                });
+            });
+    
+            $(document).ready(function () {
+                $("#satuan_barang").selectpicker();
+    
+                $("#car_models").selectpicker();
+    
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/dropdown",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "carData") {
+                                $("#satuan_barang").html(html);
+                                $("#satuan_barang").selectpicker("refresh");
+                            } else {
+                                $("#car_models").html(html);
+                                $("#car_models").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+    
+                $(document).on("change", "#satuan_barang", function () {
+                    var category_id = $("#satuan_barang").val();
+                    load_data("carModeldata", category_id);
+                });
+            });
+    
+            $(document).ready(function () {
+                $("#sumber_dana").selectpicker();
+    
+                $("#car_models").selectpicker();
+    
+                function load_data(type, category_id) {
+                    $.ajax({
+                        url: "/dropdown",
+                        method: "POST",
+                        data: { type: type, category_id: category_id },
+                        dataType: "json",
+                        success: function (data) { //alert(category_id)
+                            var html = "";
+                            for (var count = 0; count < data.length; count++) {
+                                html += '<option value="' + data[count].id + '">' + data[count].name + "</option>";
+                            }
+                            if (type == "carData") {
+                                $("#sumber_dana").html(html);
+                                $("#sumber_dana").selectpicker("refresh");
+                            } else {
+                                $("#car_models").html(html);
+                                $("#car_models").selectpicker("refresh");
+                            }
+                        },
+                    });
+                }
+    
+                $(document).on("change", "#sumber_dana", function () {
+                    var category_id = $("#sumber_dana").val();
+                    load_data("carModeldata", category_id);
+                });
+            });
+
+            $('#mytable').dataTable();
+        </script>
+          
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js"></script>
+      <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" />
+      <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      </table>
+    
+</div>
+{% endblock %}
